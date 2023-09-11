@@ -1,0 +1,11 @@
+# Login into database as user postgres
+psql -U postgres -W database
+
+# List the databases
+\l
+
+# List all the tables
+\dt
+
+# Check fields of table
+\d table_name
