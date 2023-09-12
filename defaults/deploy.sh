@@ -9,7 +9,7 @@ PORT=0000
 if [ $# -eq 1 ]
 then
 	# if there is the flag
-	if [ "$1" == "--build" ]
+	if [ "$1" == "build" ]
 	then
 		# build the image
 		sudo docker build -t $IMAGE_NAME .
