@@ -1,6 +1,6 @@
 IMAGE_NAME="personalsite:1.0"
 CONTAINER_NAME="personalsite"
-PORT=7000
+PORT=80
 
 if [ $# -eq 1 ]
 then
