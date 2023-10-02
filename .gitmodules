@@ -7,3 +7,6 @@
 [submodule "apps/shali/shali_be"]
 	path = apps/shali/shali_be
 	url = https://github.com/catonzio/shali_be.git
+[submodule "apps/portfolio/portfolio_fe"]
+	path = apps/portfolio/portfolio_fe
+	url = https://github.com/catonzio/portfolio_fe
