@@ -1,9 +1,6 @@
 [submodule "apps/eight_puzzle"]
 	path = apps/eight_puzzle
 	url = https://github.com/catonzio/eight_puzzle.git
-[submodule "apps/portfolio"]
-	path = apps/portfolio
-	url = https://github.com/catonzio/portfolio.git
 [submodule "apps/shali/shali_fe"]
 	path = apps/shali/shali_fe
 	url = https://github.com/catonzio/shali_fe.git
