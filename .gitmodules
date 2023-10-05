@@ -10,3 +10,6 @@
 [submodule "apps/portfolio/portfolio_fe"]
 	path = apps/portfolio/portfolio_fe
 	url = https://github.com/catonzio/portfolio_fe
+[submodule "apps/portfolio/portfolio_be"]
+	path = apps/portfolio/portfolio_be
+	url = https://github.com/catonzio/portfolio_be
