@@ -43,6 +43,11 @@ services:
     image: postgres:latest
     env_file:
       - ${PORTFOLIO_BE_PATH}/.env
+    environment:
+      - POSTGRES_USER=${PORTFOLIO_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${PORTFOLIO_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${PORTFOLIO_POSTGRES_DB}
+      - POSTGRES_SERVER=${PORTFOLIO_POSTGRES_SERVER}
     ports:
       - "${PORTFOLIO_POSTGRES_PORT}:5432"
     restart: always
@@ -111,9 +116,12 @@ services:
     env_file:
       - ${SHALI_BE_PATH}/.env
     environment:
-      - POSTGRES_PORT=${SHALI_POSTGRES_PORT}
-    expose:
-      - ${SHALI_POSTGRES_PORT}
+    - POSTGRES_USER=${SHALI_POSTGRES_USER}
+    - POSTGRES_PASSWORD=${SHALI_POSTGRES_PASSWORD}
+    - POSTGRES_DB=${SHALI_POSTGRES_DB}
+    - POSTGRES_SERVER=${SHALI_POSTGRES_SERVER}
+    # expose:
+    #   - ${SHALI_POSTGRES_PORT}
     ports:
       - "${SHALI_POSTGRES_PORT}:5432"
     restart: always
