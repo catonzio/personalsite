@@ -73,7 +73,8 @@ services:
   portfolio_be:
     image: portfolio_be:1.0
     container_name: portfolio_be
-    build: ${PORTFOLIO_BE_PATH}/backend
+    build: 
+      context: ${PORTFOLIO_BE_PATH}/backend
     restart: always
     depends_on:
       - portfolio_postgres
@@ -147,7 +148,8 @@ services:
   shali_be:
     image: shali_be:1.0
     container_name: shali_be
-    build: ${SHALI_BE_PATH}/backend
+    build: 
+      context: ${SHALI_BE_PATH}/backend
     restart: always
     depends_on:
       - shali_postgres
