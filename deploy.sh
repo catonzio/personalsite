@@ -15,4 +15,4 @@ commando="sudo docker compose --env-file $root_env --env-file $portfolio_env --e
 
 final="$commando $inp"
 echo "Command: $final"
-printf "$($final)\n"
+#printf "$($final)\n"
