@@ -1,8 +1,8 @@
 version: '3'
 
 networks:
- network:
-   driver: bridge
+  network:
+    driver: bridge
 
 services:
 
@@ -14,7 +14,7 @@ services:
     ports:
       - ${PORTFOLIO_FRONTEND_PORT}:80
     networks:
-     - network
+      - network
 
   portfolio_postgres:
     container_name: portfolio_db
@@ -31,9 +31,9 @@ services:
       - "${PORTFOLIO_POSTGRES_PORT}:5432"
     restart: always
     volumes:
-       - ./portfolio_be/portfolio_db/postgres-data:/var/lib/postgresql/data
+      - ./portfolio_be/portfolio_db/postgres-data:/var/lib/postgresql/data
     networks:
-     - network
+      - network
 
   portfolio_pgadmin:
     container_name: portfolio_pgadmin
@@ -47,7 +47,7 @@ services:
       - "${PORTFOLIO_PGADMIN_PORT}:80"
     restart: always
     networks:
-     - network
+      - network
 
   portfolio_be:
     image: portfolio_be:1.0
