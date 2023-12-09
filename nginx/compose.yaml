@@ -1,0 +1,32 @@
+version: "3.8"
+
+networks:
+  portfolio_network:
+    external: true
+  eight_puzzle_network:
+    external: true
+  shali_network:
+    external: true
+
+services:
+  personalsite:
+    # image: personalsite_nginx:latest
+    image: nginx:latest
+    container_name: personalsite_nginx
+    # build:
+      # context: .
+    volumes:
+      - ./etc_nginx:/etc/nginx
+      - ./etc_ssl:/etc/ssl/private
+      # - ./conf.d:/etc/conf.d
+    # environment:
+    #   - PORTFOLIO_BACKEND_PORT=1500 # ${PORTFOLIO_BACKEND_PORT}
+    #   - SHALI_BACKEND_PORT=3500 # ${SHALI_BACKEND_PORT}
+    ports:
+      - 80:80
+      - 81:81
+      - 443:443
+    networks:
+      - portfolio_network
+      - eight_puzzle_network
+      - shali_network

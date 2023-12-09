@@ -1,30 +1,60 @@
-# Step 0: Check arguments
-if [ $# -le 0 ]
+#!/bin/bash
+
+function usage {
+    echo "Usage: $0 (start|build|restart|stop)"
+    exit 1
+}
+
+if [ $# -ne 1 ]
 then
-	echo "Error! Expected at least one command"
-	exit 1
-else
-	inp="$*"
+    usage
 fi
 
-# Step 1: Define variables
-BASE_PATH=$(realpath .) # "/home/dcatone/personalsite"
-
-root_env="$BASE_PATH/.env"
-portfolio_env="$BASE_PATH/apps/portfolio/portfolio_be/.env"
-shali_env="$BASE_PATH/apps/shali/shali_be/.env"
-commando="docker compose --env-file $root_env --env-file $portfolio_env --env-file $shali_env"
-
-final="$commando $inp"
-echo "Command: $final"
-
-# Step 2: Ask the user if they want to continue
-read -p "Do you want to continue? (y/n): " choice
-
-# Step 2.1: If the user's choice is not 'y', exit the program
-if [ "$choice" == "y" ]; then
-	 eval "$final"
+if [ $1 = "start" ]
+then
+    docker_command="up -d"
+    action="Deploying"
+elif [ $1 == "build" ]
+then
+    docker_command="up --build -d"
+    action="Building"
+elif [ $1 = "stop" ]
+then
+    docker_command="stop"
+    action="Stopping"
+elif [ $1 = "restart" ]
+then
+    docker_command="restart"
+    action="Restarting"
 else
-	printf "Bye! :)\n"
+    usage
 fi
 
+eight_puzzle_path="apps/eight_puzzle"
+portfolio_path="apps/portfolio"
+shali_path="apps/shali"
+nginx_path="nginx"
+
+# Deploy all apps
+
+echo "$action eight_puzzle"
+(cd $eight_puzzle_path && (docker compose $docker_command > docker_logs.txt))&
+pid1=$!
+
+echo "$action portfolio"
+(cd $portfolio_path && (docker compose --env-file portfolio_be/.env $docker_command > docker_logs.txt))&
+pid2=$!
+
+echo "$action shali"
+(cd $shali_path && (docker compose --env-file shali_be/.env $docker_command > docker_logs.txt))&
+pid3=$!
+
+# Wait for all background processes to finish
+# echo "Waiting for all apps to finish..."
+# wait $pid1
+wait $pid2
+wait $pid3
+
+# Deploy nginx
+echo "$action nginx"
+cd $nginx_path && (docker compose $docker_command > docker_logs.txt)
