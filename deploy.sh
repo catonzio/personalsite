@@ -50,8 +50,8 @@ echo "$action shali"
 pid3=$!
 
 # Wait for all background processes to finish
-# echo "Waiting for all apps to finish..."
-# wait $pid1
+echo "Waiting for all apps to finish..."
+wait $pid1
 wait $pid2
 wait $pid3
 
