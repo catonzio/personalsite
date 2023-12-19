@@ -12,6 +12,8 @@ services:
       - 3001:80
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/www.danilocatone.com.cer:/etc/nginx/www.danilocatone.com.cer
+      - ./nginx/www.danilocatone.com.key:/etc/nginx/www.danilocatone.com.key
     depends_on:
       - shali_fe
       - shali_be
@@ -48,19 +50,19 @@ services:
     networks:
       - network
 
-  shali_pgadmin:
-    container_name: shali_pgadmin
-    image: dpage/pgadmin4:latest
-    env_file:
-      - ./shali_be/.env
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=${SHALI_PGADMIN_DEFAULT_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD=${SHALI_PGADMIN_DEFAULT_PASSWORD}
-    ports:
-      - "${SHALI_PGADMIN_PORT}:80"
-    restart: always
-    networks:
-      - network
+        #  shali_pgadmin:
+        #    container_name: shali_pgadmin
+        #    image: dpage/pgadmin4:latest
+        #    env_file:
+        #      - ./shali_be/.env
+        #    environment:
+        #      - PGADMIN_DEFAULT_EMAIL=${SHALI_PGADMIN_DEFAULT_EMAIL}
+        #      - PGADMIN_DEFAULT_PASSWORD=${SHALI_PGADMIN_DEFAULT_PASSWORD}
+        #    ports:
+        #      - "${SHALI_PGADMIN_PORT}:80"
+        #    restart: always
+        #    networks:
+        #      - network
 
   shali_be:
     hostname: shali_be

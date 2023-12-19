@@ -16,15 +16,18 @@ services:
     # build:
       # context: .
     volumes:
-      - ./etc_nginx:/etc/nginx
-      - ./etc_ssl:/etc/ssl/private
+      - ./files/default.conf:/etc/nginx/conf.d/default.conf
+      - ./files/www.danilocatone.com.cer:/etc/nginx/www.danilocatone.com.cer
+      - ./files/www.danilocatone.com.key:/etc/nginx/www.danilocatone.com.key
+      # - ./etc_nginx:/etc/nginx
+      # - ./etc_ssl:/etc/ssl/private
       # - ./conf.d:/etc/conf.d
     # environment:
     #   - PORTFOLIO_BACKEND_PORT=1500 # ${PORTFOLIO_BACKEND_PORT}
     #   - SHALI_BACKEND_PORT=3500 # ${SHALI_BACKEND_PORT}
     ports:
       - 80:80
-      - 81:81
+      # - 81:81
       - 443:443
     networks:
       - portfolio_network
