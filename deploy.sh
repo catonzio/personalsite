@@ -38,22 +38,22 @@ nginx_path="nginx"
 # Deploy all apps
 
 echo "$action eight_puzzle"
-(cd $eight_puzzle_path && (docker compose $docker_command > docker_logs.txt))&
-pid1=$!
+(cd $eight_puzzle_path && (docker compose $docker_command > docker_logs.txt))
+# pid1=$!
 
 echo "$action portfolio"
-(cd $portfolio_path && (docker compose --env-file portfolio_be/.env $docker_command > docker_logs.txt))&
-pid2=$!
+(cd $portfolio_path && (docker compose --env-file portfolio_be/.env $docker_command > docker_logs.txt))
+# pid2=$!
 
 echo "$action shali"
-(cd $shali_path && (docker compose --env-file shali_be/.env $docker_command > docker_logs.txt))&
-pid3=$!
+(cd $shali_path && (docker compose --env-file shali_be/.env $docker_command > docker_logs.txt))
+# pid3=$!
 
 # Wait for all background processes to finish
 echo "Waiting for all apps to finish..."
-wait $pid1
-wait $pid2
-wait $pid3
+# wait $pid1
+# wait $pid2
+# wait $pid3
 
 # Deploy nginx
 echo "$action nginx"
