@@ -13,3 +13,6 @@
 [submodule "apps/portfolio/portfolio_be"]
 	path = apps/portfolio/portfolio_be
 	url = https://github.com/catonzio/portfolio_be
+[submodule "apps/sette-mezzo"]
+	path = apps/sette-mezzo
+	url = https://github.com/catonzio/sette-mezzo.git

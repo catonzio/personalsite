@@ -31,6 +31,7 @@ else
 fi
 
 eight_puzzle_path="apps/eight_puzzle"
+sette_mezzo_path="apps/sette-mezzo"
 portfolio_path="apps/portfolio"
 shali_path="apps/shali"
 nginx_path="nginx"
@@ -40,6 +41,9 @@ nginx_path="nginx"
 echo "$action eight_puzzle"
 (cd $eight_puzzle_path && (docker compose $docker_command > docker_logs.txt))
 # pid1=$!
+
+echo "$action sette-mezzo"
+(cd $sette_mezzo_path && (docker compose $docker_command > docker_logs.txt))
 
 echo "$action portfolio"
 (cd $portfolio_path && (docker compose --env-file portfolio_be/.env $docker_command > docker_logs.txt))
