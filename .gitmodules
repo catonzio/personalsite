@@ -1,5 +1,5 @@
 [submodule "apps/eight_puzzle"]
-	path = apps/eight_puzzle
+	path = apps/small_games
 	url = https://github.com/catonzio/eight_puzzle.git
 [submodule "apps/shali/shali_fe"]
 	path = apps/shali/shali_fe
