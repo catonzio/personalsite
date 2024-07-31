@@ -1,9 +1,7 @@
-version: "3.8"
-
 networks:
   portfolio_network:
     external: true
-  eight_puzzle_network:
+  small_games_network:
     external: true
   shali_network:
     external: true
@@ -33,6 +31,6 @@ services:
       - 443:443
     networks:
       - portfolio_network
-      - eight_puzzle_network
+      - small_games_network
       - shali_network
       - sette-mezzo_network

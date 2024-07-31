@@ -30,7 +30,7 @@ else
     usage
 fi
 
-eight_puzzle_path="apps/eight_puzzle"
+eight_puzzle_path="apps/small_games"
 sette_mezzo_path="apps/sette-mezzo"
 portfolio_path="apps/portfolio"
 shali_path="apps/shali"
@@ -38,7 +38,7 @@ nginx_path="nginx"
 
 # Deploy all apps
 
-echo "$action eight_puzzle"
+echo "$action small_games"
 (cd $eight_puzzle_path && (docker compose $docker_command > docker_logs.txt))
 # pid1=$!
 

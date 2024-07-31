@@ -52,7 +52,7 @@ services:
       - POSTGRES_SERVER=${PORTFOLIO_POSTGRES_SERVER}
     ports:
       - "${PORTFOLIO_POSTGRES_PORT}:5432"
-    restart: always
+    restart: unless-stopped
     volumes:
       - ${PORTFOLIO_BE_PATH}/portfolio_db/postgres-data:/var/lib/postgresql/data
     networks:
@@ -68,7 +68,7 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=${PORTFOLIO_PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "${PORTFOLIO_PGADMIN_PORT}:80"
-    restart: always
+    restart: unless-stopped
     networks:
       - portfolio_network
 
@@ -77,7 +77,7 @@ services:
     container_name: portfolio_be
     build:
       context: ${PORTFOLIO_BE_PATH}/backend/
-    restart: always
+    restart: unless-stopped
     depends_on:
       - portfolio_postgres
     env_file:
@@ -127,7 +127,7 @@ services:
       #   - ${SHALI_POSTGRES_PORT}
     ports:
       - "${SHALI_POSTGRES_PORT}:5432"
-    restart: always
+    restart: unless-stopped
     volumes:
       - ${SHALI_BE_PATH}/shali_db/postgres-data:/var/lib/postgresql/data
     networks:
@@ -143,7 +143,7 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=${SHALI_PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "${SHALI_PGADMIN_PORT}:80"
-    restart: always
+    restart: unless-stopped
     networks:
       - shali_network
 
@@ -152,7 +152,7 @@ services:
     container_name: shali_be
     build:
       context: ${SHALI_BE_PATH}/backend/
-    restart: always
+    restart: unless-stopped
     depends_on:
       - shali_postgres
     env_file:
