@@ -31,4 +31,4 @@ else
 fi
 
 echo "$action portfolio"
-docker-compose --env-file portfolio_be/.env $docker_command > docker_logs.txt
+docker compose --env-file portfolio_be/.env $docker_command > docker_logs.txt

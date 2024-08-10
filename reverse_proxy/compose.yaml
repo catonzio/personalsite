@@ -1,0 +1,30 @@
+networks:
+  portfolio_network:
+    external: true
+  small_games_network:
+    external: true
+  shali_network:
+    external: true
+  sette-mezzo_network:
+    external: true
+
+services:
+  reverse-proxy:
+    tty: true
+    image: nginx:latest
+    container_name: personalsite-reverse-proxy
+    volumes:
+      - ./confs/default.conf:/etc/nginx/conf.d/default.conf
+      - ./confs/sites-enabled:/etc/nginx/sites-enabled
+      - ./confs/errors:/etc/nginx/errors
+      - ./pages:/usr/share/nginx/html
+      - ./certificate/fullchain.pem:/etc/nginx/danilocatone.duckdns.org.crt
+      - ./certificate/privkey.pem:/etc/nginx/danilocatone.duckdns.org.key
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - portfolio_network
+      - small_games_network
+      - shali_network
+      - sette-mezzo_network

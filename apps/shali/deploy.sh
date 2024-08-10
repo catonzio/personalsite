@@ -32,4 +32,4 @@ else
 fi
 
 echo "$action shali"
-docker-compose --env-file shali_be/.env $docker_command > docker_logs.txt
+docker compose --env-file shali_be/.env $docker_command > docker_logs.txt
